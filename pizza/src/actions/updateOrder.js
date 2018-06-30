@@ -1,9 +1,9 @@
-export const UPDATE_ORDER = 'UPDATE_ORDER'
+export const UPDATE_BASE = 'UPDATE_BASE'
 export const TURBO_DELIVERY = 'TURBO_DELIVERY'
 
-export function updateOrder(item) {
+export function updateBase(item) {
   return {
-    type: UPDATE_ORDER,
+    type: UPDATE_BASE,
     payload: item
   }
 }

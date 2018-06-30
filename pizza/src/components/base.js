@@ -1,8 +1,7 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {updateOrder} from '../actions/updateOrder'
-import menu from '../lib/menu'
+import {updateBase} from '../actions/updateOrder'
 
 class Base extends PureComponent {
   state = {
@@ -23,7 +22,7 @@ class Base extends PureComponent {
   }
 
   addBase = (element) => {
-    this.props.updateOrder(element)
+    this.props.updateBase(element)
   }
 
   render() {
@@ -33,17 +32,16 @@ class Base extends PureComponent {
         <form onSubmit={this.handleSubmit}>
 
           <div className="form-group">
-            <label>Select your base</label>
-            <select className="form-control" id="baseSelector" value={this.state.value} onChange={this.handleChange}>
+            <select className="form" value={this.state.value} onChange={this.handleChange}>
               <option value=""> Select a base </option>
-              <option value="20cm NY,6.45" > 20cm New York Style: € 6,45 </option >
-              <option  value="25cm NY,8.99"> 25cm New York Style: € 8,99 </option >
-              <option  value="30cm NY,11.49"> 30cm New York Style: € 11,49 </option >
-              <option  value="35cm NY,13.49"> 35cm New York Style: € 13,49 </option >
+              <option value="20cm New York Style Pizza, 6.45" > 20cm New York Style: € 6,45 </option >
+              <option  value="25cm New York Style Pizza, 8.99"> 25cm New York Style: € 8,99 </option >
+              <option  value="30cm New York Style Pizza, 11.49"> 30cm New York Style: € 11,49 </option >
+              <option  value="35cm New York Style Pizza, 13.49"> 35cm New York Style: € 13,49 </option >
             </select>
           </div>
 
-          <button type="submit" className="btn btn-secondary" onClick={this.addBase}>Add Base!</button>
+          <button type="submit" className="btn btn-secondary">Add Base!</button>
 
         </form>
 
@@ -58,4 +56,4 @@ const mapStateToProps = function (state) {
   }
 }
 
-export default connect(mapStateToProps, { updateOrder })(Base)
+export default connect(mapStateToProps, { updateBase })(Base)

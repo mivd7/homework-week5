@@ -1,4 +1,4 @@
-import { UPDATE_ORDER } from '../actions/updateOrder'
+import { UPDATE_BASE } from '../actions/updateOrder'
 
 const initialState = {
   base: '',
@@ -15,7 +15,7 @@ const initialState = {
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-  case UPDATE_ORDER:
+  case UPDATE_BASE:
     const copyState = {...state}
     if(action.payload.base){
       copyState.base = action.payload.base
