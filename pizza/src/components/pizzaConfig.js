@@ -1,29 +1,35 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
-import menu from '../lib/menu'
-
+import {updateOrder, turboDelivery} from '../actions/updateOrder'
 import Base from './base'
-// import Sauce from '../sauce/Sauce'
-// import Topping from '../topping/Topping'
+import reducer from '../reducers/pizzaOrder'
+// import Sauce from './sauce'
+// import Topping from './topping'
 
-export default class PizzaConfigurator extends PureComponent {
-
-  createElement = (element) => {
-    this.props.sendRequest(element)
-  }
+class PizzaConfigurator extends PureComponent {
 
   render() {
+    console.log(this.props.base)
+    console.log(this.props.totalPrice)
     return (
-        <div className="base">
-            <Base />
-            <h1>Checkout</h1>
-            <h3>Base: {this.props.base}</h3>
-            <h3>Total Price: {this.props.totalPrice}</h3>
-        </div>
+      <div>
+        <Base />
+        <h1>Checkout</h1>
+        <h3>Base: {this.props.base}</h3>
+        <h3>Total Price: {this.props.totalPrice}</h3>
+      </div>
       )
     }
   }
+
+const mapStateToProps = function (state) {
+    return {
+      base: state.base,
+      totalPrice: state.totalPrice
+  }
+}
+
+export default connect(mapStateToProps, { turboDelivery })(PizzaConfigurator)
   // handleChange = () => {
   //
   //   if (document.getElementById('speedDeliveryCheckbox').checked)

@@ -1,5 +1,4 @@
-import {UPDATE_BASE} from '../actions/updateOrder'
-import menu from '../lib/menu'
+import { UPDATE_ORDER } from '../actions/updateOrder'
 
 const initialState = {
   base: '',
@@ -12,12 +11,11 @@ const initialState = {
   // topping2Price: 0,
   // topping3: '',
   // topping3Price: 0,
-  // price: 0
+  totalPrice: 0
 }
-
-export default function(state = initialState, action) {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-  case UPDATE_BASE:
+  case UPDATE_ORDER:
     const copyState = {...state}
     if(action.payload.base){
       copyState.base = action.payload.base
@@ -25,11 +23,11 @@ export default function(state = initialState, action) {
     if(action.payload.basePrice){
       copyState.basePrice = action.payload.basePrice
     }
-    copyState.totalPrice = copyState.basePrice
+      copyState.totalPrice = copyState.basePrice
     return copyState
-  //case update sauce
-  //case update
   default:
-  return state
+    return state
   }
 }
+
+export default reducer

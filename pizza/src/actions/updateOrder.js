@@ -1,8 +1,16 @@
-export const UPDATE_BASE = 'UPDATE_ORDER'
+export const UPDATE_ORDER = 'UPDATE_ORDER'
+export const TURBO_DELIVERY = 'TURBO_DELIVERY'
 
-export function updateBase(item) {
+export function updateOrder(item) {
   return {
-    type: UPDATE_BASE,
+    type: UPDATE_ORDER,
     payload: item
+  }
+}
+
+export function turboDelivery(price) {
+  return {
+    type: TURBO_DELIVERY,
+    payload: price
   }
 }
