@@ -19,7 +19,7 @@ class PizzaConfigurator extends PureComponent {
   render() {
     const {addTurbo} = this.props.totalPrice * 1.1
     return (
-      <div>
+      <div classname="PizzaConfig">
         <div className="welcome">
           <h1>Welcome to New Age Pizza</h1>
           <p>The new way of making pizza quickly your way in 3 simple stages!</p>
@@ -27,10 +27,12 @@ class PizzaConfigurator extends PureComponent {
 
         <div className="Base">
           <Base />
+          {this.props.base}
         </div>
 
         <div className="sauce">
           <Sauce />
+          {this.props.sauce}
         </div>
 
         <div className="topping">
@@ -54,7 +56,7 @@ class PizzaConfigurator extends PureComponent {
           <h3>Total Price: € {this.props.totalPrice}</h3>
           <button> Place your order </button>
           <br />
-          <p>Thanks! Now wait for it... and pizza! Our dedicated delivery monkeys/drones will get you your pizza ASAP!</p>
+          <p>And all done! Now wait for it... and pizza! Please hold my beer while our dedicated delivery monkeys/drones will get you your pizza ASAP!</p>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/kTEEcxwBOMg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
         </div>
