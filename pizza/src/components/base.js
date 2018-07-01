@@ -1,13 +1,14 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {updateBase} from '../actions/updateOrder'
+import {updateOrder} from '../actions/updateOrder'
 
 class Base extends PureComponent {
   state = {
     base: '',
     basePrice: 0
   }
+
   handleSubmit = (e) => {
     e.preventDefault()
     this.addBase(this.state)
@@ -22,7 +23,7 @@ class Base extends PureComponent {
   }
 
   addBase = (element) => {
-    this.props.updateBase(element)
+    this.props.updateOrder(element)
   }
 
   render() {
@@ -34,10 +35,10 @@ class Base extends PureComponent {
           <div className="form-group">
             <select className="form" value={this.state.value} onChange={this.handleChange}>
               <option value=""> Select a base </option>
-              <option value="20cm New York Style Pizza, 6.45" > 20cm New York Style: € 6,45 </option >
-              <option  value="25cm New York Style Pizza, 8.99"> 25cm New York Style: € 8,99 </option >
-              <option  value="30cm New York Style Pizza, 11.49"> 30cm New York Style: € 11,49 </option >
-              <option  value="35cm New York Style Pizza, 13.49"> 35cm New York Style: € 13,49 </option >
+              <option value="20cm New York Style Pizza, 6.45" > 20 cm New York Style: € 6,45 </option >
+              <option  value="25cm New York Style Pizza, 8.99"> 25 cm New York Style: € 8,99 </option >
+              <option  value="30cm New York Style Pizza, 11.49"> 30 cm New York Style: € 11,49 </option >
+              <option  value="35cm New York Style Pizza, 13.49"> 35 cm New York Style: € 13,49 </option >
             </select>
           </div>
 
@@ -52,8 +53,8 @@ class Base extends PureComponent {
 
 const mapStateToProps = function (state) {
   return {
-    pizza: state.pizza
+    base: state.base
   }
 }
 
-export default connect(mapStateToProps, { updateBase })(Base)
+export default connect(mapStateToProps, { updateOrder })(Base)

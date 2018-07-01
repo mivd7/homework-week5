@@ -1,8 +1,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {updateBase, turboDelivery} from '../actions/updateOrder'
 import Base from './base'
-// import Sauce from './sauce'
+import Sauce from './sauce'
 // import Topping from './topping'
 
 class PizzaConfigurator extends PureComponent {
@@ -24,6 +23,7 @@ class PizzaConfigurator extends PureComponent {
         <div className="sauce">
           <h2>Phase two: sauce it up</h2>
           <p>Now choose which sauce you want</p>
+          <Sauce />
         </div>
 
         <div className="topping">
@@ -35,7 +35,7 @@ class PizzaConfigurator extends PureComponent {
           <h1>Checkout</h1>
           <p>Simple as that! You just made your own New Age Pizza. Review your order below:</p>
           <h3>Your base: {this.props.base}</h3>
-          <h3>Your sauce: </h3>
+          <h3>Your sauce: {this.props.sauce}</h3>
           <h3>Your toppings:</h3>
           <h3>Total Price: {this.props.totalPrice}</h3>
           <button> Place your order </button>
@@ -49,18 +49,9 @@ class PizzaConfigurator extends PureComponent {
 const mapStateToProps = function (state) {
     return {
       base: state.base,
+      sauce: state.sauce,
       totalPrice: state.totalPrice
   }
 }
 
 export default connect(mapStateToProps, null)(PizzaConfigurator)
-  // handleChange = () => {
-  //
-  //   if (document.getElementById('speedDeliveryCheckbox').checked)
-  //   {
-  //     this.props.speedDelivery(1.1)
-  //   } else {
-  //     // THIS IS NOT CORRECT I KNOW I JUST HAD A HARD TIME FINDING THE RIGHT SOLUTION
-  //     this.props.speedDelivery(0.91000001)
-  //   }
-  // }
