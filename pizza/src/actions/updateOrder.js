@@ -8,9 +8,9 @@ export function updateOrder(order) {
   }
 }
 
-export function turboDelivery(price) {
+export function turboDelivery(turbo) {
   return {
     type: TURBO_DELIVERY,
-    payload: price
+    payload: !turbo
   }
 }

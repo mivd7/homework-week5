@@ -2,33 +2,39 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import Base from './base'
 import Sauce from './sauce'
-// import Topping from './topping'
+import Toppings from './toppings'
+import PropTypes from 'prop-types'
+import '../App.css'
+// import TurboCheckbox from './checkbox'
+import {turboDelivery} from '../actions/updateOrder'
 
 class PizzaConfigurator extends PureComponent {
 
+  // toggleCheckboxChange = () => {
+  //   this.setState(({ turboDelivery }) => (
+  //     { turboDelivery: !turboDelivery, }
+  //   ))
+  // }
+
   render() {
-    console.log(this.props.base)
-    console.log(this.props.totalPrice)
+    const {addTurbo} = this.props.totalPrice * 1.1
     return (
       <div>
-        <h1>Welcome to New Age Pizza</h1>
-        <p>The new way of making pizza quickly your way in 3 simple stages!</p>
+        <div className="welcome">
+          <h1>Welcome to New Age Pizza</h1>
+          <p>The new way of making pizza quickly your way in 3 simple stages!</p>
+        </div>
 
-        <div classname="base">
-          <h2>Phase one: size does matter</h2>
-          <p>To start, pick the size of your base</p>
+        <div className="Base">
           <Base />
         </div>
 
         <div className="sauce">
-          <h2>Phase two: sauce it up</h2>
-          <p>Now choose which sauce you want</p>
           <Sauce />
         </div>
 
         <div className="topping">
-          <h2>Phase three: top it off</h2>
-          <p>Finally pick a maximum of 3 additional toppings of your choice</p>
+          <Toppings />
         </div>
 
         <div className="checkout">
@@ -37,21 +43,35 @@ class PizzaConfigurator extends PureComponent {
           <h3>Your base: {this.props.base}</h3>
           <h3>Your sauce: {this.props.sauce}</h3>
           <h3>Your toppings:</h3>
-          <h3>Total Price: {this.props.totalPrice}</h3>
-          <button> Place your order </button>
-        </div>
+          <p>{this.props.topping1}</p>
+          <p>{this.props.topping2}</p>
+          <p>{this.props.topping3}</p>
 
-      </div>
+          <div class="TurboDelivery">
+            <input type="checkbox" id="turboCheckbox" onChange={this.props.turboDelivery(addTurbo)}/>
+            <label for="turboCheckbox">Turbo Delivery (+10% of Total Price)</label>
+          </div>
+          <h3>Total Price: € {this.props.totalPrice}</h3>
+          <button> Place your order </button>
+          <br />
+          <p>Thanks! Now wait for it... and pizza! Our dedicated delivery monkeys/drones will get you your pizza ASAP!</p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/kTEEcxwBOMg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        </div>
       )
     }
   }
 
 const mapStateToProps = function (state) {
-    return {
-      base: state.base,
-      sauce: state.sauce,
-      totalPrice: state.totalPrice
+  return {
+    base: state.base,
+    sauce: state.sauce,
+    topping1: state.topping1,
+    topping2: state.topping2,
+    topping3: state.topping3,
+    turbo: state.turbo,
+    totalPrice: state.totalPrice
   }
 }
 
-export default connect(mapStateToProps, null)(PizzaConfigurator)
+export default connect(mapStateToProps, { turboDelivery })(PizzaConfigurator)

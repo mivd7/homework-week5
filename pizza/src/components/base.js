@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {updateOrder} from '../actions/updateOrder'
+import '../base.css'
 
 class Base extends PureComponent {
   state = {
@@ -28,11 +28,10 @@ class Base extends PureComponent {
 
   render() {
     return (
-      <div>
-
+      <div className="base">
+        <h2>Phase one: size does matter</h2>
+        <p>To start, pick the size of your base</p>
         <form onSubmit={this.handleSubmit}>
-
-          <div className="form-group">
             <select className="form" value={this.state.value} onChange={this.handleChange}>
               <option value=""> Select a base </option>
               <option value="20cm New York Style Pizza, 6.45" > 20 cm New York Style: € 6,45 </option >
@@ -40,10 +39,7 @@ class Base extends PureComponent {
               <option  value="30cm New York Style Pizza, 11.49"> 30 cm New York Style: € 11,49 </option >
               <option  value="35cm New York Style Pizza, 13.49"> 35 cm New York Style: € 13,49 </option >
             </select>
-          </div>
-
           <button type="submit" className="btn btn-secondary">Add Base!</button>
-
         </form>
 
       </div>

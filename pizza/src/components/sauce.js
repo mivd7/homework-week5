@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {updateOrder} from '../actions/updateOrder'
+import '../sauce.css'
 
 class Sauce extends PureComponent {
   state = {
@@ -28,7 +29,9 @@ class Sauce extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div classname="sauce">
+        <h2>Phase two: sauce it up</h2>
+        <p>Now choose which sauce you want</p>
 
         <form onSubmit={this.handleSubmit}>
 
@@ -36,9 +39,9 @@ class Sauce extends PureComponent {
             <select className="form" value={this.state.value} onChange={this.handleChange}>
               <option value=""> Select a sauce </option>
               <option value="White Sauce, 0" > White Sauce (free!) </option >
-              <option  value="Red Sauce, 0"> Red Sauce (free!)</option >
-              <option  value="Double Red, 1"> Like the above, but then double! (add €1,00)</option >
-              <option  value="35cm New York Style Pizza, 1.5"> All sauces together now(add €1,50) </option >
+              <option value="Red Sauce, 0"> Red Sauce (free!)</option >
+              <option value="Double Red, 1"> Take the red sauce and make it double! (add € 1,00)</option >
+              <option value="Mix It Up, 1.5"> All sauces together now(add € 1,50) </option >
             </select>
           </div>
 
